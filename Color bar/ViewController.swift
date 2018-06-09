@@ -10,12 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var Blinker: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        animateText()
+    
         Blinker.alpha = 0
     }
 
@@ -23,25 +23,25 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-        
-        func animateText() {
-            UIView.animate(withDuration: 0.5, animations: {self.Blinker.alpha = 0.5})
-            {_ in
-                UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {self.Blinker.alpha = 0})
-                    
-                    self.animateText()
-                
-    }
-        
-    }
     
-}
+    @IBOutlet weak var Blinker: UIView!
+    
+    
+    @IBAction func trigger(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {self.Blinker.alpha = 0.5})
+        {_ in
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.autoreverse, .repeat], animations: {self.Blinker.alpha = 0})
+            
+        }
+        
+    }
+        
+        
+    }
 
-/*   func animateText() {
- UIView.animate(withDuration: 0.5, animations: {self.Blinker.alpha = 0.5})
+
+/*  UIView.animate(withDuration: 0.5, animations: {self.Blinker.alpha = 0.5})
  {_ in
- UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: {self.Blinker.alpha = 0})
- 
- self.animateText()
+ UIView.animate(withDuration: 0.5, delay: 0.0, options: [.autoreverse, .repeat], animations: {self.Blinker.alpha = 0})
  
 */
